@@ -6,8 +6,12 @@ import androidx.lifecycle.ViewModel
 
 class RewardViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    private val _rewardPoints = MutableLiveData<Int>().apply {
+        value = 50 // Initialize with 50 points
     }
-    val text: LiveData<String> = _text
+    val rewardPoints: LiveData<Int> = _rewardPoints
+
+    fun updateRewardPoints(points: Int) {
+        _rewardPoints.value = points
+    }
 }

@@ -51,6 +51,32 @@
                 android:textColor="@android:color/black" />
 
             <Button
+                android:id="@+id/apply_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                android:backgroundTint="@android:color/holo_blue_light" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@android:color/white"
+            android:layout_margin="4dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Adidas coupon requires: 600"
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/apply_button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Apply"
@@ -84,6 +110,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/confirmation_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Are you sure you want to redeem it?\nYou have X points. After the redemption is completed, you will have X points left"
@@ -96,12 +123,14 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <Button
+                    android:id="@+id/confirm_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Yes" />
 
                 <Button
+                    android:id="@+id/cancel_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -134,6 +163,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/confirmation_success_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="You have successfully redeemed!\nCoupon code: XXXX-XXXX-XXXX"
@@ -141,6 +171,7 @@
                 android:paddingBottom="16dp" />
 
             <Button
+                android:id="@+id/close_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Close"

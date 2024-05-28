@@ -8,9 +8,6 @@
 
     <!-- Profile Section -->
 
-    <!-- Profile Picture -->
-
-    <!-- User Name -->
     <TextView
         android:id="@+id/tv_profile_title"
         android:layout_width="0dp"
@@ -26,34 +23,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- RW Point -->
-
-    <!-- Total Distance -->
-
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="80dp"
         android:src="@drawable/ic_profile_placeholder"
+        android:contentDescription="Profile Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_profile_title" />
 
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:text="USER Name"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_image" />
+        android:orientation="horizontal"
+        android:id="@+id/user_name_layout"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        >
+        <EditText
+            android:id="@+id/tv_user_name"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="USER Name"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+        <Button
+            android:id="@+id/btn_apply_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Apply"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/tv_user_name"
+            app:layout_constraintTop_toTopOf="@id/tv_user_name" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_rw_points"
@@ -64,11 +79,10 @@
         android:text="RW Point:"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+        app:layout_constraintTop_toBottomOf="@id/user_name_layout" />
 
     <TextView
         android:id="@+id/tv_total_distance"
