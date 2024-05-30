@@ -1,17 +1,16 @@
 package com.example.walkrewardapp.ui.reward
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.walkrewardapp.ui.profile.ProfileViewModel
 
-class RewardViewModel : ViewModel() {
+class RewardViewModel(private val profileViewModel: ProfileViewModel) : ViewModel() {
 
-    private val _rewardPoints = MutableLiveData<Int>().apply {
-        value = 50 // Initialize with 50 points
-    }
-    val rewardPoints: LiveData<Int> = _rewardPoints
+    // Reward points are fetched directly from ProfileViewModel
+    val rewardPoints: LiveData<Int> = profileViewModel.rewardPoints
 
+    // Function to update reward points in ProfileViewModel
     fun updateRewardPoints(points: Int) {
-        _rewardPoints.value = points
+        profileViewModel.setRewardPoints(points)
     }
 }

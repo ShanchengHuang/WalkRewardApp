@@ -13,37 +13,50 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.walkrewardapp.R
 import com.example.walkrewardapp.databinding.FragmentRewardBinding
+import com.example.walkrewardapp.ui.profile.ProfileViewModel
+
 
 class RewardFragment : Fragment() {
 
+    // Binding variable to access UI elements
     private var _binding: FragmentRewardBinding? = null
     private val binding get() = _binding!!
     private lateinit var rewardViewModel: RewardViewModel
+
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        rewardViewModel = ViewModelProvider(this).get(RewardViewModel::class.java)
+        // Initialize ViewModel
+        profileViewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
+        rewardViewModel = RewardViewModel(profileViewModel)
+
+        // Inflate the layout using view binding
         _binding = FragmentRewardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // Set up UI components
         setupUI()
 
         return root
     }
 
     private fun setupUI() {
+        // UI components
         val rewardPointsTextView: TextView = binding.tvRwPoints
         val confirmationDialog: RelativeLayout = binding.confirmationDialog
         val confirmationSuccessDialog: RelativeLayout = binding.confirmationSuccessDialog
         val couponContainer: LinearLayout = binding.llCoupons
 
+        // Observe reward points LiveData from ViewModel
         rewardViewModel.rewardPoints.observe(viewLifecycleOwner, Observer { points ->
             rewardPointsTextView.text = "Reward Point: $points"
         })
 
+        // Function to show confirmation dialog
         fun showConfirmationDialog(couponPoints: Int) {
             confirmationDialog.visibility = View.VISIBLE
             val currentPoints = rewardViewModel.rewardPoints.value ?: 0
@@ -52,9 +65,11 @@ class RewardFragment : Fragment() {
             } else {
                 "You don't have enough points."
             }
-            confirmationDialog.findViewById<TextView>(R.id.confirmation_message).text = confirmationMessage
+            confirmationDialog.findViewById<TextView>(R.id.confirmation_message).text =
+                confirmationMessage
         }
 
+        // Function to show success dialog
         fun showSuccessDialog(isSuccess: Boolean, couponCode: String = "") {
             confirmationDialog.visibility = View.GONE
             confirmationSuccessDialog.visibility = View.VISIBLE
@@ -63,9 +78,11 @@ class RewardFragment : Fragment() {
             } else {
                 "You don't have enough points to redeem this coupon."
             }
-            confirmationSuccessDialog.findViewById<TextView>(R.id.confirmation_success_message).text = successMessage
+            confirmationSuccessDialog.findViewById<TextView>(R.id.confirmation_success_message).text =
+                successMessage
         }
 
+        // Function to hide all dialogs
         fun hideAllDialogs() {
             confirmationDialog.visibility = View.GONE
             confirmationSuccessDialog.visibility = View.GONE
@@ -90,6 +107,7 @@ class RewardFragment : Fragment() {
         }
 
         val adidasCouponButton = binding.root.findViewById<Button>(R.id.apply_button2)
+
         adidasCouponButton.setOnClickListener {
             showConfirmationDialog(600)
             confirmationDialog.findViewById<Button>(R.id.confirm_button).setOnClickListener {
@@ -106,6 +124,7 @@ class RewardFragment : Fragment() {
             }
         }
 
+        // Close button to hide success dialog
         confirmationSuccessDialog.findViewById<Button>(R.id.close_button).setOnClickListener {
             hideAllDialogs()
         }
@@ -113,6 +132,6 @@ class RewardFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding = null // Clear binding when view is destroyed
     }
 }

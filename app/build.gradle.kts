@@ -52,6 +52,10 @@ dependencies {
     // Required dependencies for sensor handling
     implementation(libs.androidx.fragment.ktx)
 
+    // Dependency to include Maps SDK for Android
+    implementation(libs.play.services.maps.v1802)
+    implementation(libs.play.services.location)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

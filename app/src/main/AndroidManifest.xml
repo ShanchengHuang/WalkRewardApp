@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Manifest file defining app permissions and components -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <!-- Permissions for accessing fine and coarse location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
+    <!-- Permission for internet access -->
+    <!-- TODO: Add internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permission for activity recognition (used for detecting physical activities like walking) -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
     <application
         android:allowBackup="true"
@@ -16,13 +23,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WalkRewardApp"
         tools:targetApi="31">
+
+        <!-- Meta-data for Google Maps API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCsx2DXKCYdevPdJ6QGj7wzliSpJ23spO0" />
+
+        <!-- Main activity declaration -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
+                <!-- Main action for the activity -->
                 <action android:name="android.intent.action.MAIN" />
-
+                <!-- Category to launch the activity as the main launcher -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

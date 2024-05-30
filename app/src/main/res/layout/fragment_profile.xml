@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Root layout container using ConstraintLayout -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +9,7 @@
 
     <!-- Profile Section -->
 
+    <!-- Title for the User Profile section -->
     <TextView
         android:id="@+id/tv_profile_title"
         android:layout_width="0dp"
@@ -23,25 +25,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Profile image placeholder -->
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="80dp"
         android:src="@drawable/ic_profile_placeholder"
-        android:contentDescription="Profile Image"
+        android:contentDescription="@string/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_profile_title" />
 
+    <!-- Layout containing user name and apply button -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/user_name_layout"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/profile_image">
+        
+        <!-- Editable text field for the user name -->
         <EditText
             android:id="@+id/tv_user_name"
             android:layout_weight="0.8"
@@ -57,6 +62,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
+        <!-- Button to apply the user name change -->
         <Button
             android:id="@+id/btn_apply_username"
             android:layout_width="wrap_content"
@@ -66,10 +72,9 @@
             android:visibility="gone"
             app:layout_constraintStart_toEndOf="@id/tv_user_name"
             app:layout_constraintTop_toTopOf="@id/tv_user_name" />
-
     </LinearLayout>
 
-
+    <!-- TextView to display the reward points -->
     <TextView
         android:id="@+id/tv_rw_points"
         android:layout_width="0dp"
@@ -84,6 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_name_layout" />
 
+    <!-- TextView to display the total distance -->
     <TextView
         android:id="@+id/tv_total_distance"
         android:layout_width="0dp"

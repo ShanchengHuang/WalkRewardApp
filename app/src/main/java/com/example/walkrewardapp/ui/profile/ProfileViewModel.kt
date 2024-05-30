@@ -1,5 +1,6 @@
 package com.example.walkrewardapp.ui.profile
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,12 +8,12 @@ import androidx.lifecycle.ViewModel
 class ProfileViewModel : ViewModel() {
 
     private val _userName = MutableLiveData<String>().apply {
-        value = "USER Name" // Default value
+        value = "type in your username" // Default value
     }
     val userName: LiveData<String> = _userName
 
     private val _rewardPoints = MutableLiveData<Int>().apply {
-        value = 50 // Default value
+        value = 500 // New default value
     }
     val rewardPoints: LiveData<Int> = _rewardPoints
 
@@ -20,6 +21,10 @@ class ProfileViewModel : ViewModel() {
         value = 0f // Default value
     }
     val totalDistance: LiveData<Float> = _totalDistance
+
+    // LiveData for profile image URI
+    private val _profileImageUri = MutableLiveData<Uri>()
+    val profileImageUri: LiveData<Uri> = _profileImageUri
 
     // Functions to update the profile data
     fun setUserName(name: String) {
@@ -32,5 +37,10 @@ class ProfileViewModel : ViewModel() {
 
     fun setTotalDistance(distance: Float) {
         _totalDistance.value = distance
+    }
+
+    // Function to update the profile image URI
+    fun setProfileImageUri(uri: Uri) {
+        _profileImageUri.value = uri
     }
 }
