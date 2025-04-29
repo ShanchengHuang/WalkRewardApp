@@ -24,10 +24,10 @@
         android:theme="@style/Theme.WalkRewardApp"
         tools:targetApi="31">
 
-        <!-- Meta-data for Google Maps API Key -->
+        <!-- Meta-data for Google Maps API Key delete -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCsx2DXKCYdevPdJ6QGj7wzliSpJ23spO0" />
+            android:value="" /> 
 
         <!-- Main activity declaration -->
         <activity
